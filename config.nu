@@ -1,3 +1,10 @@
+# Repeat a command over a specified interval
+def repeat [d: duration, command] {
+	while true {
+		print $command;
+		sleep $d;
+	}
+}
 
 # Check if in git repo
 def in_git_repo [] {
