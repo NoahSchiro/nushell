@@ -1,9 +1,15 @@
 # Repeat a command over a specified interval
 def repeat [d: duration, command] {
-	while true {
-		print $command;
-		sleep $d;
-	}
+  while true {
+	print $command;
+	sleep $d;
+  }
+}
+
+# Runs scc but converts it into a format nushell can work with
+# and only savesthe columns I care about
+def nu-scc [] {
+  scc --format json | jq | from json | select Name Bytes Lines Code Comment Blank
 }
 
 # Check if in git repo
