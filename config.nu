@@ -1,7 +1,7 @@
 # Repeat a command over a specified interval
-def repeat [d: duration, command] {
-  while true {
-	print $command;
+def repeat [d: duration, command: closure] {
+  loop {
+	print (do $command);
 	sleep $d;
   }
 }
