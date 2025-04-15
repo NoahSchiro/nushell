@@ -6,6 +6,22 @@ def repeat [d: duration, command: closure] {
   }
 }
 
+def "kctl pods" [] {
+	do {kubectl get pods -n nschiro}
+}
+
+def "kctl create" [file: string] {
+	do {kubectl create -f $file -n nschiro}
+}
+
+def "kctl delete" [file: string] {
+	do {kubectl delete -f $file -n nschiro}
+}
+
+def "kctl shell" [pod_name: string] {
+	do {kubectl exec --stdin --tty $pod_name -n nschiro -- /bin/bash}
+}
+
 # Runs scc but converts it into a format nushell can work with
 # and only savesthe columns I care about
 def nu-scc [] {
